@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>온라인 방명록 | Guestbook</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 헤더 영역 -->
+        <header class="header">
+            <div class="header-badge">✨ Live Guestbook</div>
+            <h1 class="header-title">소중한 한 줄을 남겨주세요</h1>
+            <p class="header-subtitle">따뜻한 응원이나 인사말을 자유롭게 남겨보세요.</p>
+        </header>
+
+        <!-- 방명록 작성 폼 카드 -->
+        <div class="card form-card">
+            <form id="guestbook-form" class="guestbook-form">
+                <div class="input-group">
+                    <label for="user-name">작성자 이름 <span class="required">*</span></label>
+                    <input 
+                        type="text" 
+                        id="user-name" 
+                        placeholder="이름이나 닉네임을 입력하세요" 
+                        maxlength="30"
+                        autocomplete="off"
+                    >
+                </div>
+                <div class="input-group">
+                    <label for="user-message">방명록 메시지 <span class="required">*</span></label>
+                    <textarea 
+                        id="user-message" 
+                        rows="4" 
+                        placeholder="마음을 담은 이야기를 남겨주세요..." 
+                        maxlength="500"
+                    ></textarea>
+                    <div class="char-count"><span id="char-num">0</span> / 500</div>
+                </div>
+                <button type="submit" id="submit-btn" class="submit-btn">
+                    <span class="btn-text">방명록 등록하기</span>
+                    <span class="btn-icon">✍️</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- 안내 배너 (Firestore 미생성 시 도움말) -->
+        <div id="setup-guide-banner" class="guide-banner hidden">
+            <div class="guide-banner-icon">💡</div>
+            <div class="guide-banner-text">
+                <strong>Firestore 데이터베이스 설정이 필요할 수 있습니다.</strong>
+                <p>Firebase Console에서 Firestore Database를 생성하고 보안 규칙을 확인해주세요.</p>
+            </div>
+        </div>
+
+        <!-- 방명록 리스트 섹션 -->
+        <section class="messages-section">
+            <div class="section-header">
+                <h2>방명록 목록</h2>
+                <div class="message-count-badge">총 <span id="total-count">0</span>개</div>
+            </div>
+
+            <!-- 로딩 상태 -->
+            <div id="loading-state" class="state-container">
+                <div class="spinner"></div>
+                <p>방명록을 불러오는 중입니다...</p>
+            </div>
+
+            <!-- 방명록 없을 때 상태 -->
+            <div id="empty-state" class="state-container hidden">
+                <div class="empty-icon">📝</div>
+                <h3>아직 등록된 방명록이 없습니다</h3>
+                <p>가장 먼저 첫 번째 발자취를 남겨보세요!</p>
+            </div>
+
+            <!-- 방명록 카드 목록 -->
+            <div id="messages-list" class="messages-list"></div>
+        </section>
+
+        <!-- 푸터 -->
+        <footer class="footer">
+            <p>Powered by Firebase Cloud Firestore</p>
+        </footer>
+    </div>
+
+    <!-- 토스트 알림 메시지 -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
