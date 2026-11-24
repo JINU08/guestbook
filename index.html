@@ -42,6 +42,28 @@
                     ></textarea>
                     <div class="char-count"><span id="char-num">0</span> / 500</div>
                 </div>
+                <div class="input-group">
+                    <label for="image-file">사진 첨부 <span class="optional">(선택)</span></label>
+                    <div class="file-upload-wrapper">
+                        <input 
+                            type="file" 
+                            id="image-file" 
+                            accept="image/*" 
+                            class="file-input hidden-input"
+                        >
+                        <label for="image-file" class="file-upload-btn" id="file-upload-label">
+                            <span class="upload-icon">📷</span>
+                            <span class="upload-text">사진 선택하기 (최대 10MB)</span>
+                        </label>
+                    </div>
+                    <div id="image-preview-container" class="image-preview-container hidden">
+                        <div class="image-preview-box">
+                            <img id="image-preview" src="" alt="첨부 이미지 미리보기">
+                            <button type="button" id="remove-image-btn" class="remove-image-btn" title="사진 삭제" aria-label="사진 삭제">✕</button>
+                        </div>
+                        <span id="image-file-name" class="image-file-name"></span>
+                    </div>
+                </div>
                 <button type="submit" id="submit-btn" class="submit-btn">
                     <span class="btn-text">방명록 등록하기</span>
                     <span class="btn-icon">✍️</span>
@@ -90,6 +112,15 @@
 
     <!-- 토스트 알림 메시지 -->
     <div id="toast" class="toast hidden"></div>
+
+    <!-- 이미지 확대 모달 -->
+    <div id="image-modal" class="image-modal hidden" role="dialog" aria-modal="true">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button type="button" class="modal-close" id="modal-close-btn" aria-label="닫기">✕</button>
+            <img id="modal-image" src="" alt="확대된 방명록 사진">
+        </div>
+    </div>
 
     <script type="module" src="app.js"></script>
 </body>

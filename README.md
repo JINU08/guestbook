@@ -1,6 +1,14 @@
-# 📖 Firebase 실시간 온라인 방명록 (Guestbook)
+# 📖 Firebase & Cloudinary 온라인 방명록 (Guestbook)
 
-Firebase Cloud Firestore와 연동된 반응형 온라인 방명록 웹 애플리케이션입니다.
+Firebase Cloud Firestore와 Cloudinary를 연동한 반응형 온라인 방명록 웹 애플리케이션입니다.
+텍스트 메시지와 함께 사진(이미지)을 자유롭게 첨부하여 등록할 수 있습니다.
+
+---
+
+## 📷 Cloudinary 이미지 업로드 설정 정보
+- **Cloud Name**: `x1virehd`
+- **Upload Preset**: `guestbook` (Unsigned)
+- 사용자가 첨부한 이미지는 Cloudinary를 통해 다이렉트 업로드되며, 생성된 안전한 이미지 URL(`secure_url`)이 Firestore 방명록 문서에 저장됩니다.
 
 ---
 
